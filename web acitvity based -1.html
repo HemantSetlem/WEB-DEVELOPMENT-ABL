@@ -1,0 +1,533 @@
+ <!DOCTYPE html>
+     <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Personal Portfolio Website </title>
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+                scroll-behavior: smooth;
+            }
+
+            body {
+                font-family: Arial, sans-serif;
+                background: #0f172a;
+                color: #e2e8f0;
+                line-height: 1.6;
+            }
+
+            
+
+            .logo {
+                font-size: 24px;
+                font-weight: bold;
+                color: #38bdf8;
+            }
+
+            nav ul {
+                display: flex;
+                list-style: none;
+                gap: 25px;
+
+            }
+
+            nav ul li a {
+                color: #e2e8f0;
+                text-decoration: none;
+                transition: 0.3s;
+                 font-weight: 500;
+            }
+
+            nav ul li a:hover {
+                color: #38bdf8;
+            }
+
+            /* HERO */
+            .hero {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                padding: 100px 20px 50px;
+            }
+
+            .hero-content {
+                max-width: 800px;
+            }
+
+            .hero h1 {
+                font-size: 60px;
+                margin-bottom: 10px;
+            }
+
+            .hero h1 span {
+                color: #38bdf8;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+                color: #94a3b8;
+                margin-bottom: 20px;
+            }
+
+            .hero p {
+                color: #cbd5e1;
+                font-size: 18px;
+                margin-bottom: 30px;
+            }
+
+            .btn {
+                display: inline-block;
+                padding: 12px 25px;
+                margin: 8px;
+                border-radius: 8px;
+                text-decoration: none;
+                font-weight: bold;
+                transition: 0.3s;
+            }
+
+            .primary-btn {
+                background: #38bdf8;
+                color: #0f172a;
+            }
+
+            .primary-btn:hover {
+                background: #0ea5e9;
+                transform: translateY(-3px);
+            }
+
+
+            /* GENERAL */
+            section {
+                padding: 90px 8%;
+            }
+
+            .section-title {
+                text-align: center;
+                font-size: 36px;
+                margin-bottom: 50px;
+                color: #38bdf8;
+            }
+
+            /* ABOUT */
+            .about {
+                max-width: 900px;
+                margin: auto;
+                text-align: center;
+            }
+
+            .about p {
+                color: #cbd5e1;
+                font-size: 18px;
+            }
+
+            /* SKILLS */
+            .skills-container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .skill {
+                background: #1e293b;
+                padding: 12px 22px;
+                border-radius: 25px;
+                border: 1px solid #334155;
+                transition: 0.3s;
+            }
+
+            .skill:hover {
+                border-color: #38bdf8;
+                transform: translateY(-3px);
+            }
+
+            /* EXPERIENCE */
+            .timeline {
+                max-width: 900px;
+                margin: auto;
+            }
+
+            .timeline-item {
+                background: #1e293b;
+                padding: 25px;
+                margin-bottom: 20px;
+                border-left: 4px solid #38bdf8;
+                border-radius: 8px;
+            }
+
+            .timeline-item h3 {
+                color: #38bdf8;
+                margin-bottom: 5px;
+            }
+
+            .timeline-item h4 {
+                color: #94a3b8;
+                margin-bottom: 10px;
+            }
+
+            /* PROJECTS */
+            .projects {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 25px;
+            }
+
+            .project-card {
+                background: #1e293b;
+                padding: 25px;
+                border-radius: 12px;
+                border: 1px solid #334155;
+                transition: 0.3s;
+            }
+
+            .project-card:hover {
+                transform: translateY(-8px);
+                border-color: #38bdf8;
+            }
+
+            .project-card h3 {
+                color: #38bdf8;
+                margin-bottom: 12px;
+            }
+
+            .project-card p {
+                color: #38bdf8;
+                margin-bottom: 15px;
+            }
+
+            .project-card a {
+                color: #38bdf8;
+                text-decoration: none;
+            }
+
+            /* EDUCATION */
+            .education {
+                max-width: 900px;
+                margin: auto;
+            }
+
+            .education-card {
+                background: #1e293b;
+                padding: 25px;
+                margin-bottom: 20px;
+                border-radius: 10px;
+                border: 1px solid #334155;
+            }
+
+            .education-card h3 {
+                color: #38bdf8;
+            }
+
+            .education-card p {
+                color: #cbd5e1;
+            }
+
+            /* CONTACT */
+            .contact {
+                text-align: center;
+            }
+
+            .contact p {
+                margin: 10px 0;
+                color: #cbd5e1;
+            }
+
+            .contact a {
+                color: #38bdf8;
+                text-decoration: none;
+            }
+
+            /* FOOTER */
+            footer {
+                text-align: center;
+                padding: 25px;
+                background: #020617;
+                color: #94a3b8;
+            }
+
+            /* MOBILE */
+            @media (max-width: 700px) {
+
+                nav {
+                    padding: 15px 5%;
+                }
+
+                nav ul {
+                    display: none;
+                }
+
+                .hero h1 {
+                    font-size: 42px;
+                }
+
+                .hero h2 {
+                    font-size: 22px;
+                }
+
+                section {
+                    padding: 70px 5%;
+                }
+
+                .section-title {
+                    font-size: 30px;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <!-- NAVIGATION -->
+        <nav>
+            <div class="logo">Hemant</div>
+
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+
+
+        <!-- HERO -->
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <h1>Hi, I'm <span>Hemant</span></h1>
+
+                <h2>Aspiring Web Developer | B.Tech 1st Year Student</h2>
+
+                
+                <a href="#projects" class="btn primary-btn">
+                    View My Work
+                </a>
+
+                
+            </div>
+
+        </section>
+
+
+        <!-- ABOUT -->
+        <section id="about">
+
+            <h2 class="section-title">About Me</h2>
+
+            <div class="about">
+
+                <p>
+                  I am Hemant a first-year B.Tech student with a keen interest in web development. I enjoy learning new technologies, solving problems, and building simple websites using HTML and CSS. I am eager to keep improving my skills and take on new challenges.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS -->
+        <section id="skills">
+
+            <h2 class="section-title">My Skills</h2>
+
+            <div class="skills-container">
+
+                <div class="skill">HTML</div>
+                <div class="skill">CSS</div>
+                <div class="skill">JavaScript</div>
+                <div class="skill">Python</div>
+                <div class="skill">Java</div>
+                <div class="skill">SQL</div>
+                <div class="skill">Git</div>
+                <div class="skill">GitHub</div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EXPERIENCE -->
+        <section id="experience">
+
+            <h2 class="section-title">Experience</h2>
+
+            <div class="timeline">
+
+                <div class="timeline-item">
+
+                    <h3>Software Developer Intern</h3>
+
+                    <h4>Company Name | 2025 - 2026</h4>
+
+                    <p>
+                        Worked on web applications, developed new features,
+                        fixed bugs and collaborated with the development team.
+                    </p>
+
+                </div>
+
+
+                <div class="timeline-item">
+
+                    <h3>Freelance Developer</h3>
+
+                    <h4>2024 - Present</h4>
+
+                    <p>
+                        Developed responsive websites and applications for
+                        different projects and clients.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- PROJECTS -->
+        <section id="projects">
+
+            <h2 class="section-title">My Projects</h2>
+
+            <div class="projects">
+
+                <div class="project-card">
+
+                    <h3>Project One</h3>
+
+                    <p>
+                        A responsive website developed using HTML, CSS
+                        and JavaScript.
+                    </p>
+
+                    <a href="#" target="_blank">
+                        View Project →
+                    </a>
+
+                </div>
+
+
+                <div class="project-card">
+
+                    <h3>Project Two</h3>
+
+                    <p>
+                        A web application designed to solve a real-world
+                        problem using modern technologies.
+                    </p>
+
+                    <a href="#" target="_blank">
+                        View Project →
+                    </a>
+
+                </div>
+
+
+                <div class="project-card">
+
+                    <h3>Project Three</h3>
+
+                    <p>
+                        A software project demonstrating my programming
+                        and problem-solving skills.
+                    </p>
+
+                    <a href="#" target="_blank">
+                        View Project →
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- EDUCATION -->
+        <section id="education">
+
+            <h2 class="section-title">Education</h2>
+
+            <div class="education">
+
+                <div class="education-card">
+
+                    <h3>Bachelor's Degree</h3>
+
+                    <p>NRI UNIVERSITY</p>
+
+                    <p>2026 - 2030</p>
+
+                </div>
+
+
+                <div class="education-card">
+
+                    <h3>Intermediate / 12th</h3>
+
+                    <p>SRI SARADA</p>
+
+                    <p>2023 - 2026</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- CONTACT -->
+        <section id="contact">
+
+            <h2 class="section-title">Contact Me</h2>
+
+            <div class="contact">
+
+                <p>
+                    📧 Email:
+                    <a href="https://mail.google.com">
+                        setlemhemanth@gmail.com
+                    </a>
+                </p>
+
+                <p>
+                    💻 GitHub:
+                    <a href="https://github.com/" target="_blank">
+                        github.com/yourusername
+                    </a>
+                </p>
+
+                <p>
+                    🔗 LinkedIn:
+                    <a href="https://linkedin.com/" target="_blank">
+                        linkedin.com/in/yourusername
+                    </a>
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer>
+
+            <p>
+                © 2026 Hemant. All Rights Reserved.
+            </p>
+
+        </footer>
+
+    </body>
+    </html>

@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adventure Trek - Trekking & Camping</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7f3;
+            color: #26382c;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        header {
+            background: #174b35;
+            color: white;
+            padding: 18px 7%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h2 {
+            color: #d4f29a;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 8px;
+        }
+
+        nav a:hover {
+            color: #d4f29a;
+        }
+
+        /* Hero section */
+        .hero {
+            min-height: 420px;
+            background:
+                linear-gradient(#0005, #0008),
+                url("https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1500&q=80")
+                center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #d4f29a;
+            color: #174b35;
+            padding: 11px 20px;
+            border: none;
+            border-radius: 5px;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .btn:hover {
+            background: #bce778;
+        }
+
+        /* Common sections */
+        section {
+            padding: 45px 7%;
+        }
+
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .heading h2 {
+            color: #174b35;
+            font-size: 30px;
+        }
+
+        .heading p {
+            color: #65746a;
+        }
+
+        /* Trek cards */
+        .trek-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .trek-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 12px #00000012;
+        }
+
+        .trek-image {
+            height: 210px;
+            position: relative;
+        }
+
+        .trek-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .image-label {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: #174b35dd;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 5px;
+        }
+
+        .trek-info {
+            padding: 20px;
+        }
+
+        .trek-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .details {
+            background: #edf5e9;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 12px 0;
+            font-size: 14px;
+        }
+
+        .price {
+            color: #174b35;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        /* Information panels */
+        .panels {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 22px;
+        }
+
+        .panel {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 5px solid #4b8b58;
+            box-shadow: 0 3px 12px #0000000a;
+        }
+
+        .panel h3 {
+            color: #174b35;
+            margin-bottom: 12px;
+        }
+
+        .panel ul {
+            padding-left: 22px;
+        }
+
+        .panel li {
+            margin: 8px 0;
+        }
+
+        .safety {
+            background: #fff2d8;
+            border-top-color: #e4a72d;
+        }
+
+        /* Equipment checkboxes */
+        .panel label {
+            display: block;
+            margin: 12px 0;
+            font-weight: normal;
+        }
+
+        .panel input[type="checkbox"] {
+            width: auto;
+            margin-right: 8px;
+            accent-color: #174b35;
+        }
+
+        /* Schedule table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th, td {
+            padding: 13px;
+            border: 1px solid #dce5dc;
+            text-align: left;
+        }
+
+        th {
+            background: #174b35;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background: #edf5e9;
+        }
+
+        /* Booking form */
+        .booking {
+            background: #e7f0e5;
+        }
+
+        form {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+        }
+
+        form label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+        }
+
+        form input,
+        form select,
+        form textarea {
+            width: 100%;
+            padding: 11px;
+            margin-top: 5px;
+            border: 1px solid #cbd5cb;
+            border-radius: 5px;
+            font: inherit;
+        }
+
+        form textarea {
+            height: 90px;
+            resize: vertical;
+        }
+
+        form .btn {
+            width: 100%;
+            margin-top: 18px;
+        }
+
+        .form-note {
+            text-align: center;
+            color: #65746a;
+            margin-top: 12px;
+            font-size: 14px;
+        }
+
+        /* Footer */
+        footer {
+            background: #123726;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 800px) {
+            .trek-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .panels {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 550px) {
+            header {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav {
+                text-align: center;
+            }
+
+            nav a {
+                display: inline-block;
+                margin: 5px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .trek-container {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 35px 5%;
+            }
+
+            .table-container {
+                overflow-x: auto;
+            }
+
+            table {
+                min-width: 500px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <h2>🏕️ Adventure Trek</h2>
+
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#treks">Treks</a>
+            <a href="#schedule">Schedule</a>
+            <a href="#equipment">Equipment</a>
+            <a href="#booking">Book Now</a>
+        </nav>
+    </header>
+
+    <!-- Hero section -->
+    <div class="hero" id="home">
+        <div>
+            <h1>Explore the Great Outdoors</h1>
+            <p>Discover mountains, forests, trails and unforgettable adventures.</p>
+            <a href="#treks" class="btn">Explore Treks</a>
+        </div>
+    </div>
+
+    <!-- Trekking routes -->
+    <section id="treks">
+        <div class="heading">
+            <h2>Popular Trekking Routes</h2>
+            <p>Choose an adventure that matches your experience.</p>
+        </div>
+
+        <div class="trek-container">
+
+            <div class="trek-card">
+                <div class="trek-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80"
+                        alt="Mountain trekking route">
+                    <span class="image-label">Easy</span>
+                </div>
+
+                <div class="trek-info">
+                    <h3>Green Valley Trek</h3>
+                    <p>A scenic trail through green hills and beautiful valleys.</p>
+
+                    <div class="details">
+                        📍 Hillside Trail<br>
+                        ⏱️ 1 Day<br>
+                        🥾 Beginner friendly
+                    </div>
+
+                    <div class="price">₹999 / person</div>
+                    <a href="#booking" class="btn">Book Trek</a>
+                </div>
+            </div>
+
+            <div class="trek-card">
+                <div class="trek-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=800&q=80"
+                        alt="Forest trekking adventure">
+                    <span class="image-label">Moderate</span>
+                </div>
+
+                <div class="trek-info">
+                    <h3>Forest Adventure</h3>
+                    <p>Walk through forest trails and enjoy the beauty of nature.</p>
+
+                    <div class="details">
+                        📍 Forest Trail<br>
+                        ⏱️ 2 Days / 1 Night<br>
+                        🥾 Intermediate
+                    </div>
+
+                    <div class="price">₹2,499 / person</div>
+                    <a href="#booking" class="btn">Book Trek</a>
+                </div>
+            </div>
+
+            <div class="trek-card">
+                <div class="trek-image">
+                    <img
+                        src="https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=800&q=80"
+                        alt="High mountain trekking">
+                    <span class="image-label">Difficult</span>
+                </div>
+
+                <div class="trek-info">
+                    <h3>Mountain Summit</h3>
+                    <p>Challenge yourself with steep trails and mountain views.</p>
+
+                    <div class="details">
+                        📍 Mountain Route<br>
+                        ⏱️ 3 Days / 2 Nights<br>
+                        🥾 Experienced hikers
+                    </div>
+
+                    <div class="price">₹4,999 / person</div>
+                    <a href="#booking" class="btn">Book Trek</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Trip schedule -->
+    <section id="schedule">
+        <div class="heading">
+            <h2>Upcoming Trip Schedule</h2>
+            <p>Example departure dates for upcoming adventures.</p>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Trip</th>
+                        <th>Date</th>
+                        <th>Duration</th>
+                        <th>Difficulty</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Green Valley Trek</td>
+                        <td>15 November 2026</td>
+                        <td>1 Day</td>
+                        <td>Easy</td>
+                        <td>₹999</td>
+                    </tr>
+
+                    <tr>
+                        <td>Forest Adventure</td>
+                        <td>21 November 2026</td>
+                        <td>2 Days</td>
+                        <td>Moderate</td>
+                        <td>₹2,499</td>
+                    </tr>
+
+                    <tr>
+                        <td>Mountain Summit</td>
+                        <td>28 November 2026</td>
+                        <td>3 Days</td>
+                        <td>Difficult</td>
+                        <td>₹4,999</td>
+                    </tr>
+
+                    <tr>
+                        <td>Weekend Camping</td>
+                        <td>5 December 2026</td>
+                        <td>2 Days</td>
+                        <td>Easy</td>
+                        <td>₹1,799</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Equipment and safety -->
+    <section id="equipment" style="background:#e8f0e7;">
+        <div class="heading">
+            <h2>Prepare for Your Adventure</h2>
+            <p>Pack wisely and follow safety guidelines.</p>
+        </div>
+
+        <div class="panels">
+
+            <div class="panel">
+                <h3>🎒 Equipment Checklist</h3>
+
+                <label>
+                    <input type="checkbox">
+                    Trekking shoes
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Water bottle
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    First-aid kit
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Backpack
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Raincoat and warm clothes
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Torch and extra batteries
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Snacks and energy bars
+                </label>
+
+                <label>
+                    <input type="checkbox">
+                    Tent and sleeping bag for camping
+                </label>
+            </div>
+
+            <div class="panel safety">
+                <h3>⚠️ Safety Guidelines</h3>
+
+                <ul>
+                    <li>Follow your guide and stay with your group.</li>
+                    <li>Carry enough drinking water.</li>
+                    <li>Check weather forecasts before departure.</li>
+                    <li>Wear suitable footwear and clothing.</li>
+                    <li>Do not litter or disturb wildlife.</li>
+                    <li>Carry a first-aid kit and emergency contacts.</li>
+                    <li>Do not attempt routes beyond your fitness or experience.</li>
+                    <li>Follow local rules and turn back if conditions become unsafe.</li>
+                </ul>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Booking form -->
+    <section id="booking" class="booking">
+        <div class="heading">
+            <h2>Book Your Adventure</h2>
+            <p>Fill in your details to submit a trip inquiry.</p>
+        </div>
+
+        <form action="#" method="get">
+
+            <label for="name">Full Name</label>
+            <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Enter your name"
+                required>
+
+            <label for="email">Email Address</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="Enter your email"
+                required>
+
+            <label for="trip">Select Trek or Camping Trip</label>
+            <select id="trip" name="trip" required>
+                <option value="">Choose your adventure</option>
+                <option value="Green Valley Trek">Green Valley Trek</option>
+                <option value="Forest Adventure">Forest Adventure</option>
+                <option value="Mountain Summit">Mountain Summit</option>
+                <option value="Weekend Camping">Weekend Camping</option>
+                <option value="Mountain Camping">Mountain Camping</option>
+                <option value="Stargazing Camp">Stargazing Camp</option>
+            </select>
+
+            <label for="date">Preferred Date</label>
+            <input
+                type="date"
+                id="date"
+                name="date"
+                required>
+
+            <label for="people">Number of Participants</label>
+            <input
+                type="number"
+                id="people"
+                name="people"
+                min="1"
+                max="20"
+                value="1"
+                required>
+
+            <label for="notes">Additional Information</label>
+            <textarea
+                id="notes"
+                name="notes"
+                placeholder="Any questions or special requirements?"></textarea>
+
+            <button type="submit" class="btn">Submit Inquiry</button>
+
+            <p class="form-note">
+                This demo form does not save or send your inquiry.
+            </p>
+
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <h3>🏕️ Adventure Trek</h3>
+        <p>Explore more. Worry less. Discover nature.</p>
+        <p>© 2026 Adventure Trek. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
